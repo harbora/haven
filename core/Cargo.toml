@@ -1,0 +1,6 @@
+[package]
+name = "hhaven-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
