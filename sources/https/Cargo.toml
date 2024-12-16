@@ -1,5 +1,5 @@
 [package]
-name = "hhaven-entrypoint"
+name = "hhaven-source-https"
 version = { workspace = true }
 edition = { workspace = true }
 
@@ -20,6 +20,7 @@ log = { workspace = true }
 tokio-rustls = { workspace = true }
 rustls-pemfile = { workspace = true }
 
+hhaven-core = { workspace = true }
 [dev-dependencies]
 tokio = { workspace = true, features = ["macros", "rt", "rt-multi-thread"] }
 env_logger = { workspace = true }

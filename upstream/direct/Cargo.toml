@@ -1,0 +1,6 @@
+[package]
+name = "hhaven-upstream-direct"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

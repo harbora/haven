@@ -374,13 +374,23 @@ checksum = "bf151400ff0baff5465007dd2f3e717f3fe502074ca563069ce3a6629d07b289"
 [[package]]
 name = "hhaven-core"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "http",
+ "tokio",
+]
 
 [[package]]
-name = "hhaven-entrypoint"
+name = "hhaven-source-dns"
+version = "0.1.0"
+
+[[package]]
+name = "hhaven-source-https"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "env_logger",
+ "hhaven-core",
  "http-body-util",
  "hyper",
  "hyper-util",
@@ -389,6 +399,14 @@ dependencies = [
  "tokio",
  "tokio-rustls",
 ]
+
+[[package]]
+name = "hhaven-upstream-direct"
+version = "0.1.0"
+
+[[package]]
+name = "hhaven-upstream-reject"
+version = "0.1.0"
 
 [[package]]
 name = "home"
