@@ -1,6 +1,0 @@
-[package]
-name = "hhaven-upstream-reject"
-version.workspace = true
-edition.workspace = true
-
-[dependencies]

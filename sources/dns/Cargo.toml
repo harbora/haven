@@ -1,6 +1,0 @@
-[package]
-name = "hhaven-source-dns"
-version.workspace = true
-edition.workspace = true
-
-[dependencies]

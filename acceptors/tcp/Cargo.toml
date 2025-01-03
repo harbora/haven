@@ -1,0 +1,12 @@
+[package]
+name = "acceptors-tcp"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+hhaven-core = { workspace = true }
+anyhow = { workspace = true }
+
+tokio = { workspace = true, features = ["net"] }
+
+log = { workspace = true }

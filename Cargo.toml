@@ -1,7 +1,16 @@
 [workspace]
 resolver = "2"
 
-members = ["core", "sources/dns", "sources/https", "upstream/direct", "upstream/reject"]
+
+members = [
+    "core",
+
+    "acceptors/tcp",
+    # "sources/dns",
+    # "sources/https",
+    # "upstream/direct",
+    # "upstream/reject",
+]
 
 [workspace.package]
 version = "0.1.0"
