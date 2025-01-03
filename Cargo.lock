@@ -3,16 +3,6 @@
 version = 4
 
 [[package]]
-name = "acceptor-tcp"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "hhaven-core",
- "log",
- "tokio",
-]
-
-[[package]]
 name = "addr2line"
 version = "0.24.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -209,11 +199,34 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a8d1add55171497b4705a648c6b583acafb01d58050a51727785f0b2c8e0a2b2"
 
 [[package]]
+name = "hhaven-acceptor-tcp"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "hhaven-core",
+ "log",
+ "tokio",
+]
+
+[[package]]
 name = "hhaven-core"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "tokio",
+]
+
+[[package]]
+name = "hhaven-inbound-tls"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "hhaven-acceptor-tcp",
+ "hhaven-core",
+ "log",
+ "rustls-pemfile",
+ "tokio",
+ "tokio-rustls",
 ]
 
 [[package]]
@@ -223,18 +236,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "589533453244b0995c858700322199b2becb13b627df2851f64a2775d024abcf"
 dependencies = [
  "windows-sys 0.59.0",
-]
-
-[[package]]
-name = "inbound-tls"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "hhaven-core",
- "log",
- "rustls-pemfile",
- "tokio",
- "tokio-rustls",
 ]
 
 [[package]]
@@ -553,7 +554,19 @@ dependencies = [
  "mio",
  "pin-project-lite",
  "socket2",
+ "tokio-macros",
  "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "tokio-macros"
+version = "2.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "693d596312e88961bc67d7f1f97af8a70227d9f90c31bba5806eec004978d752"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]

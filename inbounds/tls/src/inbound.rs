@@ -9,11 +9,11 @@ use tokio_rustls::{
 
 use crate::{utils, TLSInboundConfig, TLSInboundStream};
 
-pub struct TLSInboundAcceptor {
+pub struct TLSInbound {
     acceptor: TlsAcceptor,
 }
 
-impl Inbound for TLSInboundAcceptor {
+impl Inbound for TLSInbound {
     type Config = TLSInboundConfig;
 
     async fn new(config: Self::Config) -> Result<Self> {
@@ -50,28 +50,16 @@ impl Inbound for TLSInboundAcceptor {
     ) -> Result<impl Stream> {
         let stream: Box<dyn Stream> = Box::new(stream);
 
-        let (sender, mut receiver) = tokio::sync::mpsc::unbounded_channel();
+        let stream = self.acceptor.accept(stream).await?;
 
-        let stream = self
-            .acceptor
-            .accept_with(stream, |conn| {
-                let sni = conn.server_name();
-                let alpn = conn.alpn_protocol();
+        let (_, server_conn) = stream.get_ref();
 
-                let info = ConnectionInfo {
-                    sni: sni.map(|f| f.as_bytes().to_vec()),
-                    alpn: alpn.map(|f| f.to_vec()),
-                };
+        let sni = server_conn.server_name().map(|f| f.as_bytes().to_vec());
+        let alpn = server_conn.alpn_protocol().map(|f| f.to_vec());
 
-                let _ = sender.send(info);
-            })
-            .await?;
+        let info = ConnectionInfo { sni, alpn };
 
-        if let Some(info) = receiver.recv().await {
-            info.set_metadata(metadata).await?;
-        } else {
-            log::error!("connection info not found");
-        }
+        info.set_metadata(metadata).await?;
 
         let stream = TLSInboundStream { stream };
 
@@ -79,6 +67,7 @@ impl Inbound for TLSInboundAcceptor {
     }
 }
 
+#[derive(Debug)]
 struct ConnectionInfo {
     sni: Option<Vec<u8>>,
     alpn: Option<Vec<u8>>,

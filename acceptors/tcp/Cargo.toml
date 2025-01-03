@@ -1,5 +1,5 @@
 [package]
-name = "acceptor-tcp"
+name = "hhaven-acceptor-tcp"
 version.workspace = true
 edition.workspace = true
 
@@ -10,3 +10,6 @@ anyhow = { workspace = true }
 tokio = { workspace = true, features = ["net"] }
 
 log = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }

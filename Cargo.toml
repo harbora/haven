@@ -5,7 +5,8 @@ resolver = "2"
 members = [
     "core",
 
-    "acceptors/tcp", "inbounds/tls",
+    "acceptors/tcp",
+    "inbounds/tls",
     # "sources/dns",
     # "sources/https",
     # "upstream/direct",
@@ -32,3 +33,7 @@ log = "0.4.20"
 env_logger = "0.11.0"
 
 hhaven-core = { path = "core", version = "0.1.0" }
+
+hhaven-acceptor-tcp = { path = "acceptors/tcp", version = "0.1.0" }
+
+hhaven-inbound-tls = { path = "inbounds/tls", version = "0.1.0" }
