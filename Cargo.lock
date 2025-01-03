@@ -217,6 +217,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "hhaven-inbound-http"
+version = "0.1.0"
+
+[[package]]
 name = "hhaven-inbound-tls"
 version = "0.1.0"
 dependencies = [

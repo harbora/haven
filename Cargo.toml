@@ -6,7 +6,7 @@ members = [
     "core",
 
     "acceptors/tcp",
-    "inbounds/tls",
+    "inbounds/tls", "inbounds/http",
     # "sources/dns",
     # "sources/https",
     # "upstream/direct",
