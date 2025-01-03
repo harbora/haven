@@ -1,12 +1,16 @@
 [package]
-name = "acceptor-tcp"
+name = "inbound-tls"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
+tokio-rustls = { workspace = true }
+tokio = { workspace = true, features = ["sync"] }
+
 hhaven-core = { workspace = true }
+
 anyhow = { workspace = true }
 
-tokio = { workspace = true, features = ["net"] }
+rustls-pemfile = { workspace = true }
 
 log = { workspace = true }

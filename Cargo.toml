@@ -5,7 +5,7 @@ resolver = "2"
 members = [
     "core",
 
-    "acceptors/tcp",
+    "acceptors/tcp", "inbounds/tls",
     # "sources/dns",
     # "sources/https",
     # "upstream/direct",
