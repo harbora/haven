@@ -1,0 +1,19 @@
+[package]
+name = "haven-dns"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-trait = { workspace = true }
+tracing = { workspace = true }
+
+hickory-server = { workspace = true }
+tokio = { workspace = true, features = ["net"] }
+
+anyhow = { workspace = true }
+
+sqlx = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "signal"] }
+tracing-subscriber = { workspace = true }

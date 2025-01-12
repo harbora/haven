@@ -1,5 +1,5 @@
 [package]
-name = "hhaven-inbound-http"
+name = "haven"
 version.workspace = true
 edition.workspace = true
 
