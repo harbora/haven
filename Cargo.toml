@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 
-members = ["core", "dns", "haven"]
+members = ["plugin", "dns", "haven"]
 
 [workspace.package]
 version = "0.1.0"
@@ -18,3 +18,5 @@ tracing-subscriber = "0.3.19"
 
 hickory-server = "0.24.2"
 sqlx = { version = "0.8.1", features = ["postgres", "runtime-tokio"] }
+
+mini-moka = "0.10.3"

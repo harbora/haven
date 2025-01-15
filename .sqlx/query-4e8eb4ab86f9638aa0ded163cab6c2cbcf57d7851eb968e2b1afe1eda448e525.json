@@ -1,0 +1,35 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT record_value, ttl, priority FROM dns_records WHERE domain_name = $1 AND record_type = $2",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "record_value",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 1,
+        "name": "ttl",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "priority",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true
+    ]
+  },
+  "hash": "4e8eb4ab86f9638aa0ded163cab6c2cbcf57d7851eb968e2b1afe1eda448e525"
+}

@@ -9,5 +9,11 @@ pub mod utils;
 mod config;
 pub use config::*;
 
-mod local_resolver;
-pub use local_resolver::*;
+mod matcher;
+pub use matcher::*;
+
+mod cache;
+pub use cache::*;
+
+mod resolver;
+pub use resolver::*;
