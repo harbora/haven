@@ -1,5 +1,7 @@
 use std::net::IpAddr;
 
+use anyhow::Result;
+
 use crate::Stream;
 
 /// Represents a remote host that can be connected to
@@ -19,6 +21,19 @@ pub trait Upstream {
     ///
     /// # Arguments
     /// * `host` - The remote host to connect to
-    /// * `stream` - The stream to use for the connection
-    fn connect(&self, host: UpstreamHost, stream: &dyn Stream);
+    fn connect(&self, host: UpstreamHost) -> Result<Box<dyn Stream>>;
+
+    /// Sends data to the remote host
+    ///
+    /// # Arguments
+    /// * `stream` - The stream to send data to
+    /// * `data` - The data to send
+    fn send(&self, stream: &dyn Stream, data: &[u8]) -> Result<()>;
+
+    /// Receives data from the remote host
+    ///
+    /// # Arguments
+    /// * `stream` - The stream to receive data from
+    /// * `buf` - The buffer to receive data into
+    fn recv(&self, stream: &dyn Stream, buf: &mut [u8]) -> Result<()>;
 }
