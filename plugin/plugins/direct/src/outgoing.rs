@@ -46,23 +46,16 @@ impl Outgoing for DirectOutgoing {
 }
 
 async fn _connect(host: OutgoingHost, interface: Option<String>) -> Result<Box<dyn Stream>> {
-    println!("host");
     let addr = parse_ip(host).await?;
-
-    println!("addr: {:?}", addr);
 
     let socket = match addr.ip() {
         IpAddr::V4(_) => TcpSocket::new_v4()?,
         IpAddr::V6(_) => TcpSocket::new_v6()?,
     };
 
-    println!("interface: {:?}", interface);
-
     if let Some(interface) = interface {
         socket.bind_device(Some(interface.as_bytes()))?;
     }
-
-    println!("interface");
 
     let stream = socket.connect(addr).await?;
 
@@ -73,7 +66,7 @@ async fn parse_ip(host: OutgoingHost) -> Result<SocketAddr> {
     match host {
         OutgoingHost::IpAddr(ip, port) => Ok(SocketAddr::new(ip, port)),
         OutgoingHost::Domain(domain, port) => {
-            let addr = tokio::net::lookup_host(domain).await?;
+            let addr = tokio::net::lookup_host(format!("{}:{}", domain, port)).await?;
             Ok(SocketAddr::new(
                 addr.into_iter()
                     .next()
