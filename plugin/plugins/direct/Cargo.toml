@@ -1,0 +1,20 @@
+[package]
+name = "hhaven-plugin-direct"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+# name = "direct"
+crate-type = ["cdylib"]
+
+[dependencies]
+serde = { workspace = true }
+toml = { workspace = true }
+
+hhaven-plugin = { workspace = true }
+
+anyhow = { workspace = true }
+
+tokio = { workspace = true, features = ["net", "rt-multi-thread"] }
+
+async-trait = { workspace = true }

@@ -1,7 +1,7 @@
 use anyhow::Result;
 use async_trait::async_trait;
 use hickory_server::{
-    authority::{MessageResponse, MessageResponseBuilder},
+    authority::MessageResponseBuilder,
     proto::{
         op::Header,
         rr::{Name, Record},
@@ -54,7 +54,7 @@ impl HavenDNSHandler {
 
         // match rule
         let domain = Name::from(query.name()).to_lowercase().to_utf8();
-        let tag_id = self.matcher.match_domain(domain).await?;
+        let _tag_id = self.matcher.match_domain(domain).await?;
 
         // resolve domain by outgoing dns
 

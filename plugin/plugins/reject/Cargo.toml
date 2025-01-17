@@ -1,0 +1,6 @@
+[package]
+name = "haven-plugin-reject"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

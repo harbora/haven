@@ -1,0 +1,22 @@
+[package]
+name = "hhaven-loader"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+hhaven-plugin = { workspace = true }
+toml = { workspace = true }
+dlopen = { workspace = true }
+anyhow = { workspace = true }
+
+tracing = { workspace = true }
+
+tokio = { workspace = true, features = ["rt"] }
+
+[dev-dependencies]
+tokio = { workspace = true, features = [
+    "macros",
+    "rt-multi-thread",
+    "io-util",
+] }
+tracing-subscriber = { workspace = true }

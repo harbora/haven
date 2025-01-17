@@ -1,4 +1,4 @@
-use crate::Upstream;
+use crate::Outgoing;
 
 /// A plugin that provides upstream functionality
 pub struct Plugin {
@@ -7,11 +7,11 @@ pub struct Plugin {
     /// Version of the plugin
     pub version: &'static str,
     /// The upstream implementation provided by this plugin
-    pub upstream: Option<Box<dyn Upstream>>,
+    pub outgoing: Option<Box<dyn Outgoing>>,
 }
 
 pub struct PluginConfig {
-    pub config: String,
+    pub config: toml::Value,
 }
 
 /// Entry point function that plugins must export
@@ -19,3 +19,5 @@ pub struct PluginConfig {
 /// This function is called when loading the plugin to get the plugin instance.
 /// It must be exported with the name "hh_plugin_entrypoint".
 pub type PluginEntrypoint = extern "C" fn(config: Box<PluginConfig>) -> Box<Plugin>;
+
+pub const PLUGIN_ENTRYPOINT_NAME: &str = "hh_plugin_entrypoint";
